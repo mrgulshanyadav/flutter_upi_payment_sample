@@ -9,20 +9,29 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  GlobalKey<ScaffoldState> _key = new GlobalKey();
+
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'UPI Payment Example',
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        key: _key,
         appBar: AppBar(title: Text('UPI Payment Example'),),
-        body: Center(
-          child: RaisedButton(
-            onPressed: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UpiPayment()));
-            },
-            child: Text('Click to Pay'),
-          ),
+        body: Builder(
+          builder: (context){
+
+            return Center(
+              child: RaisedButton(
+                onPressed: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UpiPayment()));
+                },
+                child: Text('Click to Pay'),
+              ),
+            );
+          },
         ),
       ),
     );
